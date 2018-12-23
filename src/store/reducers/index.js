@@ -1,43 +1,43 @@
 import {ADD_PERSON, DELETE_PERSON, SET_CURRENT} from "../constants";
 
 const initialState = {
-	addressBookItems: [
+	contacts: [
 		{id: 1, name: "Test1", lastname: "Test2"},
 		{id: 2, name: "A1", lastname: "a1"},
 		{id: 3, name: "qwerty", lastname: "qwerty"},
 		{id: 4, name: "qwerty123", lastname: "qwerty"}
 	],
-	current: {id: 1, name: "Test1", lastname: "Test2"}
+	current: {id: 0, name: "", lastname: ""}
 	
 };
 export default (state = initialState, action) => {
-	let addressBookItems = [...state.addressBookItems];
+	let contacts = [...state.contacts];
 	switch (action.type) {
 		case ADD_PERSON:
 			const {person} = action.payload
-			let newItemIndex = addressBookItems.findIndex(p => p.id === state.current.id)
+			let newItemIndex = contacts.findIndex(p => p.id === state.current.id)
 			if (newItemIndex<0) {
-				person.id=getNextId(addressBookItems)
-				addressBookItems.push(person);
+				person.id=getNextId(contacts)
+				contacts.push(person);
 			}
-			else addressBookItems[newItemIndex] = person
-			return {...state, addressBookItems, current:createNewItem()};
+			else contacts[newItemIndex] = person
+			return {...state, contacts, current:createNewItem()};
 		case SET_CURRENT:
 			let {current} = action.payload
 			if (!current) current = createNewItem()
 			return {...state, current};
 		case DELETE_PERSON:
-			let deleteItemIndex = addressBookItems.findIndex(p => p.id === state.current.id)
-			if(deleteItemIndex>-1) addressBookItems.splice(deleteItemIndex, 1);
-			return {...state, addressBookItems, current:createNewItem()};
+			let deleteItemIndex = contacts.findIndex(p => p.id === state.current.id)
+			if(deleteItemIndex>-1) contacts.splice(deleteItemIndex, 1);
+			return {...state, contacts, current:createNewItem()};
 		default:
 			return state;
 	}
 };
 
-const getNextId = (addressBookItems) => {
-	return Math.max(...addressBookItems.map(p => p.id), 0) + 1
+const getNextId = (contacts) => {
+	return Math.max(...contacts.map(p => p.id), 0) + 1
 }
 const createNewItem = () => {
-	return  {id: parseFloat(Math.random()).toFixed(3), name: '', lastname: ''}
+	return  {id: parseFloat(Math.random().toFixed(3)), name: '', lastname: ''}
 }

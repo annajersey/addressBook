@@ -1,3 +1,57 @@
+@import "../../assets/variables";
 section {
     flex: 3;
+    padding: 30px;
+    label {
+        width: 100px;
+        float: left;
+        height: 25px;
+        line-height: 27px;
+    }
+    .formGroup {
+        height: 40px;
+    }
+
+    form {
+        width: 300px;
+    }
+
+    button.save {
+        float: right;
+    }
+    input {
+        float: right;
+    }
+    input {
+        border-radius: 4px;
+        height: 25px;
+        line-height: 25px;
+        background: $elementsBackground;
+        color: #d0c3c3;
+        width: 180px;
+        border: 1px solid $elementsBorder;
+        padding-left: 7px;
+    }
+
+    button {
+        border-radius: 6px;
+        height: 25px;
+        line-height: 25px;
+        cursor: pointer;
+        width: 100px;
+        background-image: linear-gradient(to bottom, $dark2 0%, $dark 50%);
+        background-color: $elementsBackground;
+        border: 0;
+        outline: none;
+        color: #d0c3c3;
+    }
+
+    .errorText {
+        color: #ff8c78;
+        display: block;
+        margin-top: 4px;
+        height: 17px;
+        font-size: 12px;
+        clear: both;
+    }
 }

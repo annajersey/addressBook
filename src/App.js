@@ -2,7 +2,7 @@ import React from "react";
 import {Provider} from "react-redux";
 import Sidebar from "./components/Sidebar";
 import Main from "./components/Main";
-import "./styles.scss";
+import "./assets/styles.scss";
 import {getStore} from "./config";
 
 const store = getStore();

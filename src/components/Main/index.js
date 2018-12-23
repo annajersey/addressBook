@@ -4,43 +4,57 @@ import {connect} from "react-redux";
 import {addPerson, deletePerson} from "../../store/actions";
 
 class Main extends React.Component {
-	constructor(props){
+	constructor(props) {
 		super(props);
-		this.state={
+		this.state = {
 			person: props.current,
 			error: ''
 		}
 	}
 	
-	componentDidUpdate(prevProps){
-		if (prevProps.current.id!=this.props.current.id) {
+	componentDidUpdate(prevProps) {
+		if (prevProps.current.id != this.props.current.id) {
 			this.setState({person: {...this.props.current}})
 		}
 	}
 	
-	Save(){
-		if(!this.state.person.name || !this.state.person.lastname) {
+	Save(e) {
+		e.preventDefault();
+		if (!this.state.person.name || !this.state.person.lastname) {
 			this.setState({error: "Please fill in all fields"})
-		}
-		else {
+		} else {
 			this.setState({error: ""})
 			this.props.addPerson(this.state.person)
 		}
 	}
-	Delete(){
-		this.setState({error: ""})
-		this.props.deletePerson()
+	
+	Delete(e) {
+		e.preventDefault();
+		if(confirm("Delete this contact?")) {
+			this.setState({error: ""})
+			this.props.deletePerson()
+		}
 	}
+	
 	render() {
 		return (
 			<section>
-				<input value={this.state.person.name} name="name"
-				       onChange={(e) => this.setState({person: {...this.state.person,name: e.target.value}})}/>
-				<input value={this.state.person.lastname} name="lastname"
-				       onChange={(e) => this.setState({person: {...this.state.person,lastname: e.target.value}})}/>
-				<button onClick={() => this.Save()}>Save</button>
-				<button onClick={() => this.Delete()}>Delete</button>
-				{this.state.error}
+				<form>
+				<div className="formGroup">
+					<label htmlFor="firstname">First name</label>
+					<input autoComplete="off" id="firstname" value={this.state.person.name} name="name"
+					       onChange={(e) => this.setState({person: {...this.state.person, name: e.target.value}})}/>
+				</div>
+				<div className="formGroup"><label htmlFor="lastname">Last name</label>
+					<input autoComplete="off" value={this.state.person.lastname} name="lastname"
+					       onChange={(e) => this.setState({person: {...this.state.person, lastname: e.target.value}})}/>
+				</div>
+				<div>
+					{this.props.current.id>=1&&<button onClick={(e) => this.Delete(e)}>Delete</button>}
+					<button className="save" onClick={(e) => this.Save(e)}>Save</button>
+				</div>
+				<div className="errorText">{this.state.error}</div>
+				</form>
 			</section>
 		);
 	}
@@ -49,4 +63,4 @@ class Main extends React.Component {
 const mapStateToProps = (state) => {
 	return {current: state.current};
 };
-export default connect(mapStateToProps, {addPerson,deletePerson})(Main);
+export default connect(mapStateToProps, {addPerson, deletePerson})(Main);

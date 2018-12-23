@@ -10,6 +10,8 @@
     
 ## Instructions
 
-* Clone the repo
-* Run `npm install`
-* Run `npm start`
+* npm install to install the dependencies
+* npm start to start app on development server
+* npm run build to create production build
+
+//seo
