@@ -42,7 +42,7 @@ class Sidebar extends React.Component {
 				<header><h1>Address Book</h1>
 					<button className="addButton" onClick={()=>this.props.setCurrent(null)}>&#43;</button>
 				</header>
-				<input className="filterField" type="text" onChange={(e)=>this.filterItems(e)}/>
+				<input className="filterField" placeholder="Filter contacts" type="text" onChange={(e)=>this.filterItems(e)}/>
 				<ul>
 					{contacts.map(p =>
 						<li className={this.props.current.id==p.id?"selected":null} key={p.id} onClick={()=>this.props.setCurrent(p)}>

@@ -7,9 +7,13 @@ body {
     color: $color;
     font-family: $open-sans;
     font-size: 14px;
+}
 
-    main {
-        display: flex;
-        height: 100vh;
-    }
+main {
+    display: flex;
+    height: 100vh;
+}
+
+input{
+    color:#fff;
 }

@@ -36,14 +36,14 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(png|jpe?g)/i,
+                test: /\.(png|jpe?g|svg)/i,
                 use: [
                     {
                         loader: "url-loader",
                         options: {
                             name: "img/[path][name].[ext]",
                             context: "src/assets/images",
-                            limit: 10000
+                            limit: 10
                         }
                     },
                     {
@@ -51,38 +51,6 @@ module.exports = {
                         options: {
                             name: "img/[path][name].[ext]",
                             context: "src/assets/images"
-                        }
-                    }
-                ]
-            },
-            {
-                test: /\.svg$/,
-                use: [
-                    {
-                        loader: "babel-loader"
-                    },
-                    {
-                        loader: "react-svg-loader",
-                        options: {
-                            svgo: {
-                                plugins: [
-                                    {
-                                        removeTitle: true,
-                                    },
-                                    {
-                                        cleanupIDs: {
-                                            prefix: {
-                                                toString() {
-                                                    this.counter = this.counter || 0;
-                                                    return `id-${this.counter++}`;
-                                                }
-                                            }
-                                        }
-                                    },
-                                ],
-                                floatPrecision: 3,
-                            },
-                            jsx: true
                         }
                     }
                 ]

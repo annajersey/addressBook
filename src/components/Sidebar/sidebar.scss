@@ -2,64 +2,65 @@
 
 $paddingLeft: 20px;
 aside {
-    flex: 1;
-    border-right: 2px solid $color;
-    min-width: 300px;
+	flex: 1;
+	border-right: 2px solid $color;
+	min-width: 300px;
+	overflow-y: auto;
+	max-height: 100vh;
 
-    ul {
-        width: 100%;
-        padding: 0;
-    }
+	ul {
+		width: 100%;
+		padding: 0;
+	}
 
-    li {
-        display: block;
-        height: 25px;
-        line-height: 25px;
-        cursor: pointer;
-        padding-left: $paddingLeft;
-        text-transform: capitalize;
+	li {
+		display: block;
+		height: 25px;
+		line-height: 25px;
+		cursor: pointer;
+		padding-left: $paddingLeft;
+		text-transform: capitalize;
 
-        &.selected {
-            background: $dark;
-        }
-    }
+		&.selected {
+			background: $dark;
+		}
+	}
 }
 
 header {
-    border-bottom: 2px solid $color;
-    height: 40px;
-    padding-left: $paddingLeft;
-    margin-bottom: 10px;
+	border-bottom: 2px solid $color;
+	height: 40px;
+	padding-left: $paddingLeft;
+	margin-bottom: 10px;
 
-    h1 {
-        font-size: 13px;
-        text-transform: uppercase;
-        display: inline-block;
-    }
+	h1 {
+		font-size: 13px;
+		text-transform: uppercase;
+		display: inline-block;
+	}
 
-    .addButton {
-        float: right;
-        height: 40px;
-        width: 40px;
-        cursor: pointer;
-        background-image: linear-gradient(to bottom, $dark2 0%, $dark 50%);
-        background-color: $elementsBackground;
-        outline: none;
-        border: 0;
-        font-size: 20px;
-        border-left: 2px solid $color;
-        color: #d0c3c3;
-    }
+	.addButton {
+		float: right;
+		height: 40px;
+		width: 40px;
+		cursor: pointer;
+		background-image: linear-gradient(to bottom, $dark2 0%, $dark 50%);
+		background-color: $elementsBackground;
+		outline: none;
+		border: 0;
+		font-size: 20px;
+		border-left: 2px solid $color;
+		color: #d0c3c3;
+	}
 }
 
 .filterField {
-    width: 80%;
-    border-radius: 4px;
-    margin: 10px $paddingLeft;
-    height: 25px;
-    line-height: 25px;
-    background: $elementsBackground url('../../assets/images/search.svg') left center no-repeat;
-    color: #d0c3c3;
-    border: 1px solid $elementsBorder;
-    padding-left: 7px;
+	width: 80%;
+	border-radius: 4px;
+	margin-left: $paddingLeft;
+	height: 25px;
+	line-height: 25px;
+	background: $elementsBackground url('../../assets/images/search.svg') 8px center no-repeat;
+	border: 1px solid $elementsBorder;
+	padding-left: 30px;
 }

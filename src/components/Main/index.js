@@ -49,7 +49,7 @@ class Main extends React.Component {
 					<input autoComplete="off" value={this.state.person.lastname} name="lastname"
 					       onChange={(e) => this.setState({person: {...this.state.person, lastname: e.target.value}})}/>
 				</div>
-				<div>
+				<div className="formGroup">
 					{this.props.current.id>=1&&<button onClick={(e) => this.Delete(e)}>Delete</button>}
 					<button className="save" onClick={(e) => this.Save(e)}>Save</button>
 				</div>
