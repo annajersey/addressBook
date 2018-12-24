@@ -14,9 +14,10 @@ main {
     height: 100vh;
 }
 
-input{
+input,input:focus{
     color:#fff;
     border-width: 1px;
     border-color: #292121 $dimGray $dimGray #292121;
     border-style: solid;
+    outline: none;
 }

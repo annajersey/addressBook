@@ -26,7 +26,7 @@ export default (state = initialState, action) => {
 				person.id = getNextId(contacts)
 				contacts.push(person);
 			} else contacts[newItemIndex] = person
-			return {...state, contacts, current: createNewItem()};
+			return {...state, contacts};
 		case SET_CURRENT:
 			let {current} = action.payload
 			if (!current) current = createNewItem()
