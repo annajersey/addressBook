@@ -16,5 +16,7 @@ main {
 
 input{
     color:#fff;
-    border-color: $dimGray;
+    border-width: 1px;
+    border-color: #292121 $dimGray $dimGray #292121;
+    border-style: solid;
 }

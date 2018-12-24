@@ -25,12 +25,13 @@ section {
 	}
 
 	input {
-		border-radius: 3px;
+		border-radius: 5px;
 		height: 25px;
 		line-height: 25px;
-		background: $elementsBackground;
 		width: 250px;
-		border: 1px solid $dimGray;
+		background: $elementsBackground;
+
+
 		padding-left: 7px;
 		float: right;
 	}
@@ -45,7 +46,7 @@ section {
 		background-color: $elementsBackground;
 		border: 0;
 		outline: none;
-		color: #d0c3c3;
+		color: #fff;
 	}
 
 	.errorText {

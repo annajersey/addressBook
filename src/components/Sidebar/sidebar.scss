@@ -55,13 +55,12 @@ header {
 	}
 }
 
-.filterField {
+input.filterField {
 	width: 80%;
-	border-radius: 4px;
 	margin-left: $paddingLeft;
 	height: 25px;
+	border-radius:5px;
 	line-height: 25px;
 	background: $elementsBackground url('../../assets/images/search.svg') 8px center no-repeat;
-	border: 1px solid $dimGray;
 	padding-left: 30px;
 }
