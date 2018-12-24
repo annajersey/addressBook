@@ -25,12 +25,12 @@ section {
 	}
 
 	input {
-		border-radius: 4px;
+		border-radius: 3px;
 		height: 25px;
 		line-height: 25px;
 		background: $elementsBackground;
 		width: 250px;
-		border: 1px solid $elementsBorder;
+		border: 1px solid $dimGray;
 		padding-left: 7px;
 		float: right;
 	}

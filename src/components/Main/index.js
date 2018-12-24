@@ -22,6 +22,8 @@ class Main extends React.Component {
 		e.preventDefault();
 		if (!this.state.person.name || !this.state.person.lastname) {
 			this.setState({error: "Please fill in all fields"})
+		}else if(!(/^[0-9+]*$/.test(this.state.person.phone))){
+			this.setState({error: "Phone field can contain numbers only"})
 		} else {
 			this.setState({error: ""})
 			this.props.addPerson(this.state.person)
@@ -30,32 +32,39 @@ class Main extends React.Component {
 	
 	Delete(e) {
 		e.preventDefault();
-		if(confirm("Delete this contact?")) {
+		if (confirm("Delete this contact?")) {
 			this.setState({error: ""})
 			this.props.deletePerson()
 		}
 	}
 	
 	render() {
-		let isNewContact = this.props.current.id<1;
+		let isNewContact = this.props.current.id < 1;
 		return (
 			<section>
 				<form>
-					<h2>{isNewContact?"Add New Contact":"Edit Contact"}</h2>
-				<div className="formGroup">
-					<label htmlFor="firstname">First name</label>
-					<input autoComplete="off" id="firstname" value={this.state.person.name} name="name"
-					       onChange={(e) => this.setState({person: {...this.state.person, name: e.target.value}})}/>
-				</div>
-				<div className="formGroup"><label htmlFor="lastname">Last name</label>
-					<input autoComplete="off" value={this.state.person.lastname} name="lastname"
-					       onChange={(e) => this.setState({person: {...this.state.person, lastname: e.target.value}})}/>
-				</div>
-				<div className="formGroup">
-					{!isNewContact&&<button onClick={(e) => this.Delete(e)}>Delete</button>}
-					<button className="save" onClick={(e) => this.Save(e)}>Save</button>
-				</div>
-				<div className="errorText">{this.state.error}</div>
+					<h2>{isNewContact ? "Add New Contact" : "Edit Contact"}</h2>
+					<div className="formGroup">
+						<label htmlFor="firstname">First name</label>
+						<input autoComplete="off" id="firstname" value={this.state.person.name} name="name"
+						       onChange={(e) => this.setState({person: {...this.state.person, name: e.target.value}})}/>
+					</div>
+					<div className="formGroup"><label htmlFor="lastname">Last name</label>
+						<input autoComplete="off" value={this.state.person.lastname} name="lastname"
+						       onChange={(e) => this.setState({person: {...this.state.person,
+								       lastname: e.target.value}})}/>
+					</div>
+					<div className="formGroup"><label htmlFor="phone">Phone</label>
+						<input autoComplete="off" value={this.state.person.phone} type="tel" name="phone"
+						       onChange={(e) => this.setState({person: {...this.state.person,
+								       phone: e.target.value}})}
+						/>
+					</div>
+					<div className="formGroup">
+						{!isNewContact && <button onClick={(e) => this.Delete(e)}>Delete</button>}
+						<button className="save" onClick={(e) => this.Save(e)}>Save</button>
+					</div>
+					<div className="errorText">{this.state.error}</div>
 				</form>
 			</section>
 		);
