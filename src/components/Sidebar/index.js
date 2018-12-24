@@ -46,7 +46,8 @@ class Sidebar extends React.Component {
 				<input className="filterField" placeholder="Filter contacts" type="text" onChange={(e)=>this.filterItems(e)}/>
 				<ul>
 					{contacts.map(p =>
-						<li className={this.props.current.id==p.id?"selected":null} key={p.id} onClick={()=>this.props.setCurrent(p)}>
+						<li className={this.props.current.id==p.id?"selected":null}
+						    key={p.id} onClick={()=>this.props.setCurrent(p)}>
 							{p.lastName + ' ' + p.firstName}
 						</li>)
 					}

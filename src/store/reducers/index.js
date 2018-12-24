@@ -8,10 +8,14 @@ const createNewItem = () => {
 }
 const initialState = {
 	contacts: [
-		{id: 1, firstName: "Test1", lastName: "Test2", phone: "123"},
-		{id: 2, firstName: "A1", lastName: "a1", phone: "123"},
-		{id: 3, firstName: "qwerty", lastName: "qwerty", phone: "123"},
-		{id: 4, firstName: "qwerty123", lastName: "qwerty", phone: "123"}
+		{id: 1, firstName: "Freddie", lastName: "Mercury", phone: "12345678"},
+		{id: 2, firstName: "John", lastName: "Deacon", phone: "24567586"},
+		{id: 3, firstName: "Brian", lastName: "May", phone: "34834575"},
+		{id: 4, firstName: "Roger", lastName: "Taylor", phone: "45678545"},
+		{id: 5, firstName: "John", lastName: "Lennon", phone: "564745674"},
+		{id: 6, firstName: "Paul", lastName: "McCartney", phone: "456345656"},
+		{id: 7, firstName: "George", lastName: "Harrison", phone: "34834575"},
+		{id: 8, firstName: "Ringo", lastName: "Starr", phone: "45678545"}
 	],
 	current: createNewItem()
 	
@@ -26,7 +30,7 @@ export default (state = initialState, action) => {
 				contact.id = getNextId(contacts)
 				contacts.push(contact);
 			} else contacts[newItemIndex] = contact
-			return {...state, contacts};
+			return {...state, contacts, current: contact};
 		case SET_CURRENT:
 			let {current} = action.payload
 			if (!current) current = createNewItem()

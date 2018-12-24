@@ -7,13 +7,13 @@ import PropTypes from "prop-types";
 class Main extends React.Component {
 	constructor(props) {
 		super(props);
-		this.defaultContact={
+		this.defaultContact = {
 			firstName: '',
 			lastName: '',
 			phone: ''
 		}
 		this.state = {
-			contact: {...this.defaultContact,...props.current},
+			contact: {...this.defaultContact, ...props.current},
 			errorText: '',
 			successText: ''
 		}
@@ -21,26 +21,35 @@ class Main extends React.Component {
 	
 	componentDidUpdate(prevProps) {
 		if (prevProps.current.id != this.props.current.id) {
-			this.setState({contact: {...this.defaultContact,...this.props.current},errorText: '',successText: ''})
+			this.setState({contact: {...this.defaultContact, ...this.props.current}, errorText: ''})
 		}
 	}
 	
 	Save(e) {
 		e.preventDefault();
-		if (!this.state.contact.firstName || !this.state.contact.lastName) {
-			this.setState({errorText: "Please fill in all fields"})
+		let successText, errorText, findDuplicate;
+		if (this.props.current.id < 1) {
+			findDuplicate = this.props.contacts.findIndex(
+				c => c.firstName == this.state.contact.firstName && c.lastName == this.state.contact.lastName);
+		}
+		if(findDuplicate > -1&&this.props.current.id < 1){
+			errorText = "The contact with this name already exists"
+		}
+		else if (!this.state.contact.firstName || !this.state.contact.lastName) {
+			errorText = "Please fill in all fields"
 		} else if (!(/^[0-9]*$/.test(this.state.contact.phone))) {
-			this.setState({errorText: "Phone field can contain numbers only"})
+			errorText = "Phone field can contain numbers only"
 		} else {
-			this.setState({errorText: "", successText:"Contact was saved"})
+			successText = "Contact was saved"
 			this.props.addContact(this.state.contact)
 		}
+		this.setState({errorText, successText})
 	}
 	
 	Delete(e) {
 		e.preventDefault();
 		if (confirm("Delete this contact?")) {
-			this.setState({errorText: ""})
+			this.setState({errorText: "",successText:""})
 			this.props.deleteContact()
 		}
 	}
@@ -54,7 +63,12 @@ class Main extends React.Component {
 					<div className="formGroup">
 						<label htmlFor="firstName">First name</label>
 						<input autoComplete="off" value={this.state.contact.firstName || ''} name="firstName"
-						       onChange={(e) => this.setState({contact: {...this.state.contact, firstName: e.target.value}})}/>
+						       onChange={(e) => this.setState({
+							       contact: {
+								       ...this.state.contact,
+								       firstName: e.target.value
+							       }
+						       })}/>
 					</div>
 					<div className="formGroup"><label htmlFor="lastName">Last name</label>
 						<input autoComplete="off" value={this.state.contact.lastName || ''} name="lastName"
@@ -96,6 +110,7 @@ Main.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-	return {current: state.current};
+	let {contacts, current} = state
+	return {contacts, current};
 };
 export default connect(mapStateToProps, {addContact, deleteContact})(Main);
