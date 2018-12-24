@@ -51,10 +51,9 @@ section {
 
 	.notification{
 		display: block;
-		margin-top: 4px;
-		height: 17px;
 		font-size: 12px;
 		clear: both;
+		text-align: right;
 		.errorText {
 			color: #ff8c78;
 		}

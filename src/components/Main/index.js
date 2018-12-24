@@ -6,8 +6,13 @@ import {addContact, deleteContact} from "../../store/actions";
 class Main extends React.Component {
 	constructor(props) {
 		super(props);
+		this.defaultContact={
+			name: '',
+			lastname: '',
+			phone: ''
+		}
 		this.state = {
-			contact: props.current,
+			contact: {...this.defaultContact,...props.current},
 			errorText: '',
 			successText: ''
 		}
@@ -15,7 +20,7 @@ class Main extends React.Component {
 	
 	componentDidUpdate(prevProps) {
 		if (prevProps.current.id != this.props.current.id) {
-			this.setState({contact: {...this.props.current},errorText: '',successText: ''})
+			this.setState({contact: {...this.defaultContact,...this.props.current},errorText: '',successText: ''})
 		}
 	}
 	
@@ -73,7 +78,7 @@ class Main extends React.Component {
 						{!isNewContact && <button onClick={(e) => this.Delete(e)}>Delete</button>}
 						<button className="save" onClick={(e) => this.Save(e)}>Save</button>
 					</div>
-					<div className="notification">
+					<div className="formGroup notification">
 						<span className="errorText">{this.state.errorText}</span>
 						<span className="successText">{this.state.successText}</span>
 					</div>
