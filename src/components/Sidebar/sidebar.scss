@@ -22,7 +22,8 @@ aside {
 		text-transform: capitalize;
 
 		&.selected {
-			background: $dark;
+			background: $vanillaIce;
+			color:#fff;
 		}
 	}
 }
@@ -44,7 +45,7 @@ header {
 		height: 40px;
 		width: 40px;
 		cursor: pointer;
-		background-image: linear-gradient(to bottom, $dark2 0%, $dark 50%);
+		background-image: linear-gradient(to bottom, $dimGray 0%, $vanillaIce 50%);
 		background-color: $elementsBackground;
 		outline: none;
 		border: 0;
