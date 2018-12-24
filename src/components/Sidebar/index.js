@@ -2,6 +2,7 @@ import React from "react";
 import "./sidebar.scss";
 import {connect} from "react-redux";
 import  _isEqual from 'lodash.isequal'
+import PropTypes from 'prop-types';
 import {setCurrent} from "../../store/actions";
 
 class Sidebar extends React.Component {
@@ -22,15 +23,15 @@ class Sidebar extends React.Component {
 		let value = e.target.value;
 		let contacts = [...this.props.contacts]
 		contacts = contacts.filter(i=>
-			i.name.toLowerCase().indexOf(value.toLowerCase())==0||
-			i.lastname.toLowerCase().indexOf(value.toLowerCase())==0
+			i.firstName.toLowerCase().indexOf(value.toLowerCase())==0||
+			i.lastName.toLowerCase().indexOf(value.toLowerCase())==0
 		)
 		this.setState({contacts});
 	}
 	
 	sortContacts(contacts){
 		contacts.sort( (a, b) =>
-			 a.name.toUpperCase().localeCompare(b.name.toUpperCase())
+			 a.lastName.toLowerCase().localeCompare(b.firstName.toLowerCase())
 		);
 		return contacts;
 	}
@@ -46,7 +47,7 @@ class Sidebar extends React.Component {
 				<ul>
 					{contacts.map(p =>
 						<li className={this.props.current.id==p.id?"selected":null} key={p.id} onClick={()=>this.props.setCurrent(p)}>
-							{p.lastname + ' ' + p.name}
+							{p.lastName + ' ' + p.firstName}
 						</li>)
 					}
 				</ul>
@@ -54,6 +55,17 @@ class Sidebar extends React.Component {
 		);
 	}
 }
+
+Sidebar.propTypes = {
+	contacts: PropTypes.arrayOf(PropTypes.shape({
+		id: PropTypes.number.isRequired,
+		firstName: PropTypes.string.isRequired,
+		lastName: PropTypes.string.isRequired,
+		phone: PropTypes.string,
+	})),
+	current: PropTypes.object,
+	setCurrent: PropTypes.func
+};
 
 const mapStateToProps = (state) => {
 	return {contacts: state.contacts, current: state.current};

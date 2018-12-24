@@ -2,13 +2,14 @@ import React from "react";
 import "./main.scss";
 import {connect} from "react-redux";
 import {addContact, deleteContact} from "../../store/actions";
+import PropTypes from "prop-types";
 
 class Main extends React.Component {
 	constructor(props) {
 		super(props);
 		this.defaultContact={
-			name: '',
-			lastname: '',
+			firstName: '',
+			lastName: '',
 			phone: ''
 		}
 		this.state = {
@@ -26,7 +27,7 @@ class Main extends React.Component {
 	
 	Save(e) {
 		e.preventDefault();
-		if (!this.state.contact.name || !this.state.contact.lastname) {
+		if (!this.state.contact.firstName || !this.state.contact.lastName) {
 			this.setState({errorText: "Please fill in all fields"})
 		} else if (!(/^[0-9]*$/.test(this.state.contact.phone))) {
 			this.setState({errorText: "Phone field can contain numbers only"})
@@ -51,16 +52,16 @@ class Main extends React.Component {
 				<form>
 					<h2>{isNewContact ? "Add New Contact" : "Edit Contact"}</h2>
 					<div className="formGroup">
-						<label htmlFor="firstname">First name</label>
-						<input autoComplete="off" id="firstname" value={this.state.contact.name || ''} name="name"
-						       onChange={(e) => this.setState({contact: {...this.state.contact, name: e.target.value}})}/>
+						<label htmlFor="firstName">First name</label>
+						<input autoComplete="off" value={this.state.contact.firstName || ''} name="firstName"
+						       onChange={(e) => this.setState({contact: {...this.state.contact, firstName: e.target.value}})}/>
 					</div>
-					<div className="formGroup"><label htmlFor="lastname">Last name</label>
-						<input autoComplete="off" value={this.state.contact.lastname || ''} name="lastname"
+					<div className="formGroup"><label htmlFor="lastName">Last name</label>
+						<input autoComplete="off" value={this.state.contact.lastName || ''} name="lastName"
 						       onChange={(e) => this.setState({
 							       contact: {
 								       ...this.state.contact,
-								       lastname: e.target.value
+								       lastName: e.target.value
 							       }
 						       })}/>
 					</div>
@@ -87,6 +88,12 @@ class Main extends React.Component {
 		);
 	}
 }
+
+Main.propTypes = {
+	current: PropTypes.object,
+	addContact: PropTypes.func,
+	deleteContact: PropTypes.func,
+};
 
 const mapStateToProps = (state) => {
 	return {current: state.current};

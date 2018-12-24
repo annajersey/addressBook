@@ -12,10 +12,10 @@ const mockStore = configureMockStore();
 let store, sidebarWrapper, contacts;
 beforeEach(() => {
 	contacts = [
-		{id: 1, name: "John", lastname: "Dou"},
-		{id: 2, name: "Lorem", lastname: "Ipsum"}
+		{id: 1, firstName: "John", lastName: "Doe", phone: ''},
+		{id: 2, firstName: "Lorem", lastName: "Ipsum", phone: ''}
 	]
-	let current = {id: 0, name: "", lastname: ""}
+	let current = {id: 0, firstName: "", lastName: "", phone: ''}
 	store = mockStore({contacts, current});
 	store.dispatch = jest.fn();
 	sidebarWrapper = mount(<Provider store={store}><Sidebar/></Provider>);

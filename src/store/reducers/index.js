@@ -4,14 +4,14 @@ const getNextId = (contacts) => {
 	return Math.max(...contacts.map(p => p.id), 0) + 1
 }
 const createNewItem = () => {
-	return {id: parseFloat(Math.random().toFixed(3)), name: '', lastname: '', phone: ''}
+	return {id: parseFloat(Math.random().toFixed(3)), firstName: '', lastName: '', phone: ''}
 }
 const initialState = {
 	contacts: [
-		{id: 1, name: "Test1", lastname: "Test2", phone: 123},
-		{id: 2, name: "A1", lastname: "a1"},
-		{id: 3, name: "qwerty", lastname: "qwerty"},
-		{id: 4, name: "qwerty123", lastname: "qwerty"}
+		{id: 1, firstName: "Test1", lastName: "Test2", phone: "123"},
+		{id: 2, firstName: "A1", lastName: "a1", phone: "123"},
+		{id: 3, firstName: "qwerty", lastName: "qwerty", phone: "123"},
+		{id: 4, firstName: "qwerty123", lastName: "qwerty", phone: "123"}
 	],
 	current: createNewItem()
 	
