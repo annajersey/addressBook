@@ -1,65 +1,62 @@
 @import "../../assets/variables";
 
 section {
-	flex: 3;
-	padding: 10px 40px;
+    flex: 3;
+    padding: 10px 40px;
 
-	h2 {
-		margin: 10px 0 40px 0;
-	}
+    h2 {
+        margin: 10px 0 40px 0;
+    }
 
-	label {
-		width: 100px;
-		float: left;
-		height: 25px;
-		line-height: 27px;
-	}
+    label {
+        width: 100px;
+        float: left;
+        height: 25px;
+        line-height: 27px;
+    }
 
-	.formGroup {
-		height: 50px;
-		width: 380px;
-	}
+    .formGroup {
+        height: 50px;
+        width: 380px;
+    }
 
-	button.save {
-		float: right;
-	}
+    button.save {
+        float: right;
+    }
 
-	input {
-		border-radius: 5px;
-		height: 25px;
-		line-height: 25px;
-		width: 250px;
-		background: $elementsBackground;
+    input {
+        border-radius: 5px;
+        height: 25px;
+        line-height: 25px;
+        width: 250px;
+        background: $elementsBackground;
+        padding-left: 7px;
+        float: right;
+    }
 
+    button {
+        border-radius: 6px;
+        height: 25px;
+        line-height: 25px;
+        cursor: pointer;
+        width: 100px;
+        background-image: linear-gradient(to bottom, $dimGray 0%, $vanillaIce 50%);
+        background-color: $elementsBackground;
+        border: 0;
+        outline: none;
+        color: #fff;
+    }
 
-		padding-left: 7px;
-		float: right;
-	}
-
-	button {
-		border-radius: 6px;
-		height: 25px;
-		line-height: 25px;
-		cursor: pointer;
-		width: 100px;
-		background-image: linear-gradient(to bottom, $dimGray 0%, $vanillaIce 50%);
-		background-color: $elementsBackground;
-		border: 0;
-		outline: none;
-		color: #fff;
-	}
-
-	.notification{
-		display: block;
-		font-size: 12px;
-		clear: both;
-		text-align: right;
-		.errorText {
-			color: #ff8c78;
-		}
-		.successText{
-			color: #52b652;
-		}
-	}
-
+    .notification {
+        display: block;
+        font-size: 12px;
+        clear: both;
+        text-align: right;
+        .errorText {
+            color: #ff8c78;
+        }
+        .successText {
+            color: #52b652;
+        }
+    }
 }

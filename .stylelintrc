@@ -23,6 +23,7 @@
     "declaration-empty-line-before": "never",
     "length-zero-no-unit": true,
     "at-rule-empty-line-before": "always",
-    "font-family-no-missing-generic-family-keyword": true
+    "font-family-no-missing-generic-family-keyword": true,
+    "string-quotes" : "double"
   }
 }

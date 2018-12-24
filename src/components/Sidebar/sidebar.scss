@@ -23,7 +23,7 @@ aside {
 
 		&.selected {
 			background: $vanillaIce;
-			color:#fff;
+			color: #fff;
 		}
 	}
 }
@@ -56,11 +56,12 @@ header {
 }
 
 input.filterField {
-	width: 80%;
-	margin-left: $paddingLeft;
-	height: 25px;
-	border-radius:5px;
-	line-height: 25px;
-	background: $elementsBackground url('../../assets/images/search.svg') 8px center no-repeat;
-	padding-left: 30px;
+	width: 90%;
+	box-sizing: border-box;
+	display: block;
+	margin: 15px auto;
+	height: 30px;
+	line-height: 30px;
+	background: $elementsBackground url("../../assets/images/search.svg") 8px center no-repeat;
+	padding: 0 15px 0 30px;
 }
