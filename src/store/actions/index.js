@@ -1,18 +1,18 @@
-import {ADD_PERSON, SET_CURRENT, DELETE_PERSON} from "../constants";
+import {ADD_CONTACT, SET_CURRENT, DELETE_CONTACT} from "../constants";
 
-export function addPerson(person) {
+export function addContact(contact) {
     const action = {
-        type: ADD_PERSON,
+        type: ADD_CONTACT,
         payload: {
-            person
+            contact
         }
     };
     return action;
 }
 
-export function deletePerson() {
+export function deleteContact() {
     const action = {
-        type: DELETE_PERSON
+        type: DELETE_CONTACT
     };
     return action;
 }

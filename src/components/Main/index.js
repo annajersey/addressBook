@@ -1,13 +1,13 @@
 import React from "react";
 import "./main.scss";
 import {connect} from "react-redux";
-import {addPerson, deletePerson} from "../../store/actions";
+import {addContact, deleteContact} from "../../store/actions";
 
 class Main extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			person: props.current,
+			contact: props.current,
 			errorText: '',
 			successText: ''
 		}
@@ -15,19 +15,19 @@ class Main extends React.Component {
 	
 	componentDidUpdate(prevProps) {
 		if (prevProps.current.id != this.props.current.id) {
-			this.setState({person: {...this.props.current},errorText: '',successText: ''})
+			this.setState({contact: {...this.props.current},errorText: '',successText: ''})
 		}
 	}
 	
 	Save(e) {
 		e.preventDefault();
-		if (!this.state.person.name || !this.state.person.lastname) {
+		if (!this.state.contact.name || !this.state.contact.lastname) {
 			this.setState({errorText: "Please fill in all fields"})
-		} else if (!(/^[0-9+]*$/.test(this.state.person.phone))) {
+		} else if (!(/^[0-9]*$/.test(this.state.contact.phone))) {
 			this.setState({errorText: "Phone field can contain numbers only"})
 		} else {
 			this.setState({errorText: "", successText:"Contact was saved"})
-			this.props.addPerson(this.state.person)
+			this.props.addContact(this.state.contact)
 		}
 	}
 	
@@ -35,7 +35,7 @@ class Main extends React.Component {
 		e.preventDefault();
 		if (confirm("Delete this contact?")) {
 			this.setState({errorText: ""})
-			this.props.deletePerson()
+			this.props.deleteContact()
 		}
 	}
 	
@@ -47,23 +47,23 @@ class Main extends React.Component {
 					<h2>{isNewContact ? "Add New Contact" : "Edit Contact"}</h2>
 					<div className="formGroup">
 						<label htmlFor="firstname">First name</label>
-						<input autoComplete="off" id="firstname" value={this.state.person.name || ''} name="name"
-						       onChange={(e) => this.setState({person: {...this.state.person, name: e.target.value}})}/>
+						<input autoComplete="off" id="firstname" value={this.state.contact.name || ''} name="name"
+						       onChange={(e) => this.setState({contact: {...this.state.contact, name: e.target.value}})}/>
 					</div>
 					<div className="formGroup"><label htmlFor="lastname">Last name</label>
-						<input autoComplete="off" value={this.state.person.lastname || ''} name="lastname"
+						<input autoComplete="off" value={this.state.contact.lastname || ''} name="lastname"
 						       onChange={(e) => this.setState({
-							       person: {
-								       ...this.state.person,
+							       contact: {
+								       ...this.state.contact,
 								       lastname: e.target.value
 							       }
 						       })}/>
 					</div>
 					<div className="formGroup"><label htmlFor="phone">Phone</label>
-						<input autoComplete="off" value={this.state.person.phone || ''} type="tel" name="phone"
+						<input autoComplete="off" value={this.state.contact.phone || ''} type="tel" name="phone"
 						       onChange={(e) => this.setState({
-							       person: {
-								       ...this.state.person,
+							       contact: {
+								       ...this.state.contact,
 								       phone: e.target.value
 							       }
 						       })}
@@ -86,4 +86,4 @@ class Main extends React.Component {
 const mapStateToProps = (state) => {
 	return {current: state.current};
 };
-export default connect(mapStateToProps, {addPerson, deletePerson})(Main);
+export default connect(mapStateToProps, {addContact, deleteContact})(Main);
