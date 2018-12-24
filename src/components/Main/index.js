@@ -37,9 +37,11 @@ class Main extends React.Component {
 	}
 	
 	render() {
+		let isNewContact = this.props.current.id<1;
 		return (
 			<section>
 				<form>
+					<h2>{isNewContact?"Add New Contact":"Edit Contact"}</h2>
 				<div className="formGroup">
 					<label htmlFor="firstname">First name</label>
 					<input autoComplete="off" id="firstname" value={this.state.person.name} name="name"
@@ -50,7 +52,7 @@ class Main extends React.Component {
 					       onChange={(e) => this.setState({person: {...this.state.person, lastname: e.target.value}})}/>
 				</div>
 				<div className="formGroup">
-					{this.props.current.id>=1&&<button onClick={(e) => this.Delete(e)}>Delete</button>}
+					{!isNewContact&&<button onClick={(e) => this.Delete(e)}>Delete</button>}
 					<button className="save" onClick={(e) => this.Save(e)}>Save</button>
 				</div>
 				<div className="errorText">{this.state.error}</div>
