@@ -45,8 +45,9 @@ section {
         border: 0;
         outline: none;
         color: #fff;
-        &:active{
-            border:1px solid $dimGray
+
+        &:active {
+            border: 1px solid $dimGray;
         }
     }
 
@@ -55,11 +56,9 @@ section {
         font-size: 12px;
         clear: both;
         text-align: right;
+
         .errorText {
             color: #ff8c78;
-        }
-        .successText {
-            color: #cec0c0;
         }
     }
 }
