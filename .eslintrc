@@ -1,5 +1,6 @@
 {
   "extends": [
+    "airbnb-base",
     "eslint:recommended",
     "plugin:react/recommended"
   ],
@@ -25,6 +26,7 @@
     "global-require": "off",
     "arrow-body-style": "off",
     "indent": ["error",4],
+    "max-len": ["error", {"code": 800}],
     "jsx-quotes": ["error", "prefer-double"],
     "semi": [
       "error",
@@ -75,7 +77,6 @@
     "keyword-spacing": ["error"]
   },
   "plugins": [
-    "prefer-arrow",
-    "react"
+    "prefer-arrow"
   ]
 }
