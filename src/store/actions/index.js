@@ -1,8 +1,17 @@
-import {ADD_CONTACT, SET_CURRENT, DELETE_CONTACT} from "../constants";
+import {ADD_CONTACT, EDIT_CONTACT, SET_CURRENT, DELETE_CONTACT} from "../constants";
 
-export function addContact(contact) {
+export function addContact(newContact) {
     const action = {
         type: ADD_CONTACT,
+        payload: {
+            newContact
+        }
+    };
+    return action;
+}
+export function editContact(contact) {
+    const action = {
+        type: EDIT_CONTACT,
         payload: {
             contact
         }

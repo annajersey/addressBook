@@ -1,4 +1,4 @@
-import {ADD_CONTACT, DELETE_CONTACT, SET_CURRENT} from "../constants";
+import {ADD_CONTACT, EDIT_CONTACT, DELETE_CONTACT, SET_CURRENT} from "../constants";
 
 const getNextId = (contacts) => {
     return Math.max(...contacts.map(p => p.id), 0) + 1;
@@ -18,22 +18,24 @@ const initialState = {
         {id: 8, firstName: "Ringo", lastName: "Starr", phone: "45678545", address: "1 White St"}
     ],
     current: createNewItem()
-    
+
 };
 export default (state = initialState, action) => {
     const contacts = [...state.contacts];
     switch (action.type) {
     case ADD_CONTACT: {
+        const {newContact} = action.payload;
+        newContact.id = getNextId(contacts);
+        contacts.push(newContact);
+        return {...state, contacts, current: newContact};
+    }
+    case EDIT_CONTACT: {
         const {contact} = action.payload;
         const newItemIndex = contacts.findIndex(p => p.id === state.current.id);
-        if (newItemIndex < 0) {
-            contact.id = getNextId(contacts);
-            contacts.push(contact);
-        } else {
-            contacts[newItemIndex] = contact;
-        }
+        contacts[newItemIndex] = contact;
         return {...state, contacts, current: contact};
     }
+
     case SET_CURRENT: {
         let {current} = action.payload;
         if (!current) {
