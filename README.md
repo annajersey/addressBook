@@ -35,8 +35,8 @@ I added linters (eslint and stylelint) to keep a uniform coding style.
 
 There are two basic components for my address book - Sidebar for the contacts list with filter and Main for the form to add, modify, delete items.
 
-All project data is stored in the redux state, which contains just two properties: a list of contacts and the current contact being processed.
-At any moment of its life, the application has the "current" contact which can have an integer id (in case we took existing one from the list) or fractional id (if it is a new item) - thats how I distinguish them. The Main component holds contact fields in its state and send them to redux store after user press save button
+All project data is stored in the redux state, which contains just two properties: a list of contacts and the current contact being processed. The "current" object will have an integer id if it is an existing item or fractional id if it is a new item.
+
 I added prop-types checking to be sure the components received expected props and wrote a couple of tests for each component. For testing I use jest and enzyme.
 
 
@@ -53,4 +53,4 @@ This way I would not stored all data in redux, but only the data I got from the 
 
 Also, large contact list means I would need to add some pagination or rather an infinite scroll, getting data by chunks from the server.
 
-The filtering process would be changed too. To consider all existing contacts while filtering, there should be done a request to the server each time the user press the letter on the filter box and the data should be return also "by page"
+The filtering process would be changed too. To consider all existing contacts while filtering, there should be done a request to the server each time the user put the letter on the filter box and the data should be return also "by page"
