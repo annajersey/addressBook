@@ -16,8 +16,8 @@ beforeEach(() => {
     FormWrapper = mount(<Provider store={store}><Main/></Provider>);
 });
 
-test("There are three text fields in the form", () => {
-    expect(FormWrapper.find("input")).toHaveLength(3);
+test("There are four text fields in the form", () => {
+    expect(FormWrapper.find("input")).toHaveLength(4);
 });
 
 test("Component renders values of current contact in the form fields", () => {

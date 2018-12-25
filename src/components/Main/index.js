@@ -15,20 +15,18 @@ class Main extends React.Component {
         };
         this.state = {
             contact: {...this.defaultContact, ...props.current},
-            errorText: "",
-            successText: ""
-        };
+            errorText: ""};
     }
 	
     componentDidUpdate(prevProps) {
         if (prevProps.current.id != this.props.current.id) { //TODO
-            this.setState({contact: {...this.defaultContact, ...this.props.current}, errorText: "", successText:""});
+            this.setState({contact: {...this.defaultContact, ...this.props.current}, errorText: ""});
         }
     }
 	
     Save(e) {
         e.preventDefault();
-        let successText, errorText, findDuplicate;
+        let errorText, findDuplicate;
         if (this.props.current.id < 1) {
             findDuplicate = this.props.contacts.findIndex(
                 c => c.firstName == this.state.contact.firstName && c.lastName == this.state.contact.lastName);
@@ -41,16 +39,15 @@ class Main extends React.Component {
         } else if (!(/^[0-9]*$/.test(this.state.contact.phone))) {
             errorText = "Phone field can contain numbers only";
         } else {
-            successText = "Contact was saved";
             this.props.addContact(this.state.contact);
         }
-        this.setState({errorText, successText});
+        this.setState({errorText});
     }
 	
     Delete(e) {
         e.preventDefault();
         if (confirm("Delete this contact?")) {
-            this.setState({errorText: "",successText:""});
+            this.setState({errorText: ""});
             this.props.deleteContact();
         }
     }
@@ -106,8 +103,7 @@ class Main extends React.Component {
                     </div>
                     <div className="formGroup notification">
                         <span className="errorText">{this.state.errorText}</span>
-                        <span className="successText">{this.state.successText}</span>
-                    </div>
+                     </div>
                 </form>
             </section>
         );

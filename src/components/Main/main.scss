@@ -37,7 +37,7 @@ section {
     button {
         border-radius: 6px;
         height: 25px;
-        line-height: 25px;
+        line-height: 23px;
         cursor: pointer;
         width: 100px;
         background-image: linear-gradient(to bottom, $dimGray 0%, $vanillaIce 50%);
@@ -45,6 +45,9 @@ section {
         border: 0;
         outline: none;
         color: #fff;
+        &:active{
+            border:1px solid $dimGray
+        }
     }
 
     .notification {

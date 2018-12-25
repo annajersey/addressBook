@@ -30,9 +30,11 @@ class Sidebar extends React.Component {
     }
 	
     sortContacts(contacts){
+        console.log('a',contacts)
         contacts.sort( (a, b) =>
-			 a.lastName.toLowerCase().localeCompare(b.firstName.toLowerCase())
+			 a.lastName.toLowerCase().localeCompare(b.lastName.toLowerCase())
         );
+        console.log('b',contacts)
         return contacts;
     }
 	
