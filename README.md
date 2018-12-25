@@ -3,7 +3,7 @@
 #### Avaliable features:
     
   * List of all address book entries, sorted by name
-  * Filtering the entries
+  * Filtering the entries by first name  and last name
   * Creating a new entry
   * Modifying an entry
   * Deleting an entry
@@ -14,7 +14,7 @@
 
  `npm start` to start app on the development server http://localhost:8080/
 
- `npm run build` to create the production build
+ `npm run build` to create the production build in the dist folder. You can change the base folder in webpack.production.js
 
 ### Assignment questions and answers
 ---
@@ -37,7 +37,7 @@ There are two basic components for my address book - Sidebar for the contacts li
 
 For the filter condition I used combination of firstname+lastname or lastname+firstname because that's how people probably would search their contacts.
 
-All project data is stored in the redux state, which contains just two properties: a list of contacts and the current contact being processed. The "current" object will have an integer id if it is an existing item or fractional id if it is a new item.
+All project data is stored in the redux state, which contains just two properties: a list of contacts and the current contact being processed. The "current" object will have an integer id if it is an existing item or fractional id if it is a new item (that's how i distinguish them)
 
 I added prop-types checking to be sure the components received expected props and wrote a couple of tests for each component. For testing I use jest and enzyme.
 

@@ -23,8 +23,8 @@ class Sidebar extends React.Component {
         const value = e.target.value;
         let contacts = [...this.props.contacts];
         contacts = contacts.filter(i =>
-            (i.firstName+' '+i.lastName).toLowerCase().indexOf(value.toLowerCase()) == 0
-            || (i.lastName+' '+i.firstName).toLowerCase().indexOf(value.toLowerCase()) == 0
+            (i.firstName+" "+i.lastName).toLowerCase().indexOf(value.toLowerCase()) == 0
+            || (i.lastName+" "+i.firstName).toLowerCase().indexOf(value.toLowerCase()) == 0
         );
         this.setState({contacts});
     }

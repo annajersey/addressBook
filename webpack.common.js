@@ -43,7 +43,7 @@ module.exports = {
                         options: {
                             name: "img/[path][name].[ext]",
                             context: "src/assets/images",
-                            limit: 10
+                            limit: 1000
                         }
                     },
                     {
