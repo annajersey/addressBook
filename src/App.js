@@ -7,15 +7,10 @@ import {getStore} from "./config";
 
 const store = getStore();
 
-class App extends React.Component {
-    render() {
-        return (
-            <Provider store={store}>
-                <Sidebar/>
-                <Main/>
-            </Provider>
-        );
-    }
-}
+const App = () =>
+    <Provider store={store}>
+        <Sidebar/>
+        <Main/>
+    </Provider>;
 
 export default App;
