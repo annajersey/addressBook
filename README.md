@@ -35,6 +35,8 @@ I added linters (eslint and stylelint) to keep a uniform coding style.
 
 There are two basic components for my address book - Sidebar for the contacts list with filter and Main for the form to add, modify, delete items.
 
+For the filter condition I used combination of firstname+lastname or lastname+firstname because that's how people probably would search their contacts.
+
 All project data is stored in the redux state, which contains just two properties: a list of contacts and the current contact being processed. The "current" object will have an integer id if it is an existing item or fractional id if it is a new item.
 
 I added prop-types checking to be sure the components received expected props and wrote a couple of tests for each component. For testing I use jest and enzyme.
