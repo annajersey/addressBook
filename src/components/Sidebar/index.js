@@ -9,33 +9,43 @@ class Sidebar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            contacts: props.contacts
+            contacts: props.contacts,
+            filterKey: ""
         };
     }
-    
+
     componentDidUpdate(prevProps) {
         if (!_isEqual(prevProps.contacts, this.props.contacts)) {
-            this.setState({contacts: this.props.contacts});
+            this.setContactsListWithFilter();
         }
     }
-    
-    filterItems(e) {
-        const value = e.target.value;
-        let contacts = [...this.props.contacts];
-        contacts = contacts.filter(i =>
-            (i.firstName+" "+i.lastName).toLowerCase().indexOf(value.toLowerCase()) == 0
-            || (i.lastName+" "+i.firstName).toLowerCase().indexOf(value.toLowerCase()) == 0
+
+    setContactsListWithFilter() {
+        const contacts = this.props.contacts;
+        const filterKey = this.state.filterKey;
+        if (!filterKey) {
+            this.setState({contacts});
+        }
+        const filteredContacts = contacts.filter(i =>
+            (i.firstName + " " + i.lastName).toLowerCase().indexOf(filterKey.toLowerCase()) == 0
+            || (i.lastName + " " + i.firstName).toLowerCase().indexOf(filterKey.toLowerCase()) == 0
         );
-        this.setState({contacts});
+        this.setState({contacts: filteredContacts});
     }
-    
+
+    filterItems(e) {
+        this.setState({filterKey: e.target.value}, () => {
+            this.setContactsListWithFilter();
+        });
+    }
+
     sortContacts(contacts) {
         contacts.sort((a, b) =>
             a.lastName.toLowerCase().localeCompare(b.lastName.toLowerCase())
         );
         return contacts;
     }
-    
+
     render() {
         const contacts = this.sortContacts(this.state.contacts);
         return (
